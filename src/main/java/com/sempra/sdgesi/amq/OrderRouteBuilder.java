@@ -11,7 +11,7 @@ public class OrderRouteBuilder extends RouteBuilder {
     public void configure() throws Exception {
 
         from("activemq:queue:orders")
-            .to("log:?level=INFO&showBody=true");
+            .to("log:?level=WARN&showBody=false");
 
         restConfiguration()
             .component("spark-rest")
@@ -22,7 +22,7 @@ public class OrderRouteBuilder extends RouteBuilder {
             .post()
                 .to("activemq:queue:orders")
             .get("/{id}")
-                .to("log:?level=INFO&showBody=true");
+                .to("log:?level=WARN&showBody=false");
 
     }
 
